@@ -1,4 +1,4 @@
-package org.camunda.internal.hapdfydocumentcreator;
+package org.camunda.internal.hapdfy;
 
 import org.junit.Rule;
 import org.junit.Test;

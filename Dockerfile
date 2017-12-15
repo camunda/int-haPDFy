@@ -13,7 +13,7 @@ VOLUME ["/tmp"]
 ENV JAVA_OPTS="" \
     DOCKER_JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap" \
     LANG=en_US.utf8 \
-    DEPLOYMENT_ARTIFACT=haPDFy-document-creator.jar
+    DEPLOYMENT_ARTIFACT=haPDFy.jar
 ENTRYPOINT exec java ${JAVA_OPTS} ${DOCKER_JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /${DEPLOYMENT_ARTIFACT}
 COPY --from=builder /build/target/${DEPLOYMENT_ARTIFACT} /${DEPLOYMENT_ARTIFACT}
 RUN addgroup -S app && \

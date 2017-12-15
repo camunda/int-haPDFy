@@ -1,4 +1,4 @@
-package org.camunda.internal.hapdfydocumentcreator;
+package org.camunda.internal.hapdfy;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
