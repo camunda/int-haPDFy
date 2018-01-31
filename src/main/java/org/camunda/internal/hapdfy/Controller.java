@@ -28,9 +28,9 @@ public class Controller {
   @RequestMapping(
           value = "/generateFromTemplate",
           method = RequestMethod.POST,
-          consumes = MediaType.APPLICATION_JSON_VALUE)
+          consumes = MediaType.APPLICATION_JSON_VALUE,
+          produces = MediaType.APPLICATION_PDF_VALUE)
   public byte[] generateFromTemplate(@RequestBody PdfPayload pdfPayload) {
-    LOGGER.log(Level.INFO, "Generate PDF from Template " + pdfPayload);
 
     try {
       return pdfService.createPdfFileFromTemplate(pdfPayload.getTemplate(), pdfPayload.getInputParameter());
@@ -38,6 +38,14 @@ public class Controller {
       LOGGER.log(Level.SEVERE, e.getMessage() + " - PAYLOAD: " + pdfPayload);
       throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
     }
+  }
+
+  @RequestMapping(
+          value="/status",
+          method = RequestMethod.GET,
+          produces = MediaType.APPLICATION_JSON_VALUE)
+  public String status() {
+    return "online";
   }
 
 }
