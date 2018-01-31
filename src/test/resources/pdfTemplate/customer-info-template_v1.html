@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Information</title>
+  <style>
+    body {
+      height: 842px;
+      width: 595px;
+
+      font: 12px 'Calibri';
+    }
+    h1 {
+      font: bold 21px 'Calibri';
+      color: #365f91;
+      margin-bottom: 0px;
+    }
+    h2 {
+      font-size: 14px;
+      color: #365f91;
+      margin-top: 30px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+    }
+    #end {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<div id="header">
+
+</div>
+<div id="customer-name">
+  <h1>Customer Support Information for Customer Name</h1>
+  <hr />
+</div>
+<div id="welcome">
+  <br>
+  Dear Customer,</br></br>
+  Welcome to Camunda BPM.</br>
+  With this document we provide important information about the Camunda BPM platform and our support services. If you have any further questions, please do not hesitate to contact us.
+  </p>
+</div>
+<div id="sla">
+  <h2>Service Level Agreement</h2>
+  <p>Based on our license agreement we have defined the following SLAs:</p>
+  <table>
+    <thead>
+    <tr>
+      <th>Level</th>
+      <th>Definition</th>
+      <th>Availability</th>
+      <th>Response Time</th>
+      <th>Reporting via</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>L1 <img class="img-responsive" src="../img/jira-blocker.png"/>Blocker</td>
+      <td>Core components (i.e. process engine) of Camunda BPM do not work at all / produce critical errors that prevent usage in production mode. Bug report only.</td>
+      <td>8/5</td>
+      <td>8 business hours</td>
+      <td>Ticketing System (Monday-Friday, 9 a.m.-5 p.m. CET, German holidays apply)</td>
+    </tr>
+    <tr>
+      <td>L2 <img class="img-responsive" src="../img/jira-major.png"/>Critical</td>
+      <td>Usage of Camunda BPM seriously affected, a workaround is urgently needed. Bug report only.</td>
+      <td>8/5</td>
+      <td>8 business hours</td>
+      <td>Ticketing System (Monday-Friday, 9 a.m.-5 p.m. CET, German holidays apply)</td>
+    </tr>
+    <tr>
+      <td>L3 <img class="img-responsive" src="../img/jira-minor.png"/>Default</td>
+      <td>Non-critical errors, help requests, feature requests.</td>
+      <td>8/5</td>
+      <td>16 business hours</td>
+      <td>Ticketing System (Monday-Friday, 9 a.m.-5 p.m. CET, German holidays apply)</td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <p>
+    <div>Number of designated support contacts: 4</div>
+    <div>Number of support tickets per month: 10</div>
+    <div>Evaluation expiration date: 31.01.2018</div>
+    </p>
+  </div>
+  <div>
+    <p>
+      A support contact is a technical person within your organization that becomes an internal expert for Camunda and can provide internal support for your engineers, while interacting with the Camunda support on all more advanced questions or bug reports.
+    </p>
+    <p>With our service level agreement we define a fixed number of named employees as exclusive contacts for support requests. The number of support contacts can be increased at any time by updating your contract accordingly. Changing a designated contact person is possible if the person left the licensee’s organization or took a different job.</p>
+  </div>
+</div>
+<div id="contact">
+  <h2>Contact</h2>
+  <p>The general way to contact our support team is our JIRA Support Desk:
+    <a href="https://app.camunda.com/jira/browse/SUPPORT">https://app.camunda.com/jira/browse/SUPPORT</a>.
+  </p>
+  <p>Please note that we prefer JIRA for support tickets. With JIRA your tickets are traceable, your tickets
+    can contain much more information in a structured way and you get a better overview about the
+    status of your support cases. JIRA tickets can be shared with your colleagues and serve as database
+    for you.</p>
+  <p>Furthermore you may contact us via telephone: <b>+49 30 6640409-19</b>, Monday-Friday, 9 a.m.-5 p.m. CET, German holidays apply.</p>
+  <p>Outside business hours (Monday-Friday, 9 a.m.-5 p.m. CET, German holidays apply) please contact our 24x7 support hotline for Level 1 Issues: <b>+49 30 6640409-11</b>.</p>
+</div>
+<div id="download-distribution">
+  <h2>Download & Distribution</h2>
+  <p>With the following company account you get access to our download areas:</p>
+  <p>
+  <div>Username: allianz_deutschland_ag</div>
+  <div>Password: c9fb79c6-cf29-4747-a</div>
+  </p>
+  <p>
+  <div>Camunda BPM Platform–EE: <a href="http://docs.camunda.org/enterprise/download/">http://docs.camunda.org/enterprise/download/</a></div>
+  <div>Camunda Nexus: <a href="https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee">https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee</a></div>
+  <div>Camunda Modeler: <a href="http://camunda.org/download/modeler">http://camunda.org/download/modeler</a></div>
+  </p>
+</div>
+<div id="license">
+  <h2>License Key</h2>
+  <p>Please use the following license key to enable enterprise features of the Camunda BPM platform:</p>
+  <p><div class="license-key"></div></p>
+  <p>Find more information about license activation in our user guide <a href="http://docs.camunda.org/manual/latest/webapps/admin/system-management/#camunda-license-key">http://docs.camunda.org/manual/latest/webapps/admin/system-management/#camunda-license-key</a>.</p>
+</div>
+<div id="documentation">
+  <h2>Documentation & Help</h2>
+  <p>For help and information, please refer to our documentation guide: <a href="docs.camunda.org">docs.camunda.org</a>. Please note that you can select certain versions of the Camunda docs.</p>
+  <p>Best Practices: <a href="https://camunda.com/best-practices/">https://camunda.com/best-practices/</a>. Please use your company account to login.</p>
+  <p>Get more information on the JIRA issue tracking system under <a href="http://docs.camunda.org/enterprise/support/">http://docs.camunda.org/enterprise/support/</a>.</p>
+</div>
+<div id="end">
+  <p>
+    Kind Regards,</br>
+    Your Camunda Support Team
+  </p>
+</div>
+</body>
+</html>

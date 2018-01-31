@@ -27,3 +27,4 @@ target
 .settings
 .editorconfig
 *.iml
+.idea
