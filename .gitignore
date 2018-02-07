@@ -28,3 +28,4 @@ target
 .settings
 .editorconfig
 *.iml
+*.code-workspace
