@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,14 +34,17 @@ public class PdfServiceTest {
 
   @Test
   public void shouldCreatePdfFileFromTemplate() throws Exception {
-    String templateFileName = "./src/test/resources/pdfTemplate/pdf-template-1.pdf";
+
+    String templateFileName = "/pdfTemplate/pdf-template-1.pdf";
     Map<String, String> inputParameters = new HashMap<>();
     inputParameters.put("CUSTOMER_NAME", "Pillemann und Söhne GmbH & Cö. KG");
+    URL templateFileUrl = this.getClass().getResource(templateFileName);
 
-    Path pdfPath = Paths.get(templateFileName);
+    byte[] fileBytes = Files.readAllBytes(Paths.get(templateFileUrl.toURI()));
+    byte[] getPdfFileFromTemplate = pdfService.createPdfFileFromTemplate(fileBytes, inputParameters);
 
     OutputStream out = new FileOutputStream(folder.getRoot() + "/customer-information-1.pdf");
-    out.write(pdfService.createPdfFileFromTemplate(Files.readAllBytes(pdfPath), inputParameters));
+    out.write(getPdfFileFromTemplate);
     out.close();
 
     File file = new File(folder.getRoot() + "/customer-information-1.pdf");
