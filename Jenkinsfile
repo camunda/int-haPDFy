@@ -1,2 +1,2 @@
-@Library("camunda-internal-master") _
+@Library("camunda-internal") _
 camundaPipeline()
