@@ -1,5 +1,5 @@
 ############ CI image ###############
-FROM maven:3.5.0-jdk-8-alpine as builder
+FROM maven:3.8.6-openjdk-18-slim as builder
 VOLUME ["/maven-repo"]
 WORKDIR /build
 ADD . /build
@@ -7,7 +7,7 @@ RUN mvn clean verify -DskipTests=false --batch-mode
 
 
 ############ Production image ###############
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 EXPOSE 8080
 VOLUME ["/tmp"]
 ENV JAVA_OPTS="" \

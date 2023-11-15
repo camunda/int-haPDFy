@@ -1,16 +1,6 @@
 package org.camunda.internal.hapdfy;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.embedded.LocalServerPort;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.assertj.core.api.BDDAssertions.then;
 
 import java.net.URI;
 import java.net.URL;
@@ -19,17 +9,26 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.assertj.core.api.BDDAssertions.then;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalManagementPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = {"management.port=0"})
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,properties = {"management.server.port=0"})
+//@TestPropertySource(properties = {"management.server.port=0"})
 public class ControllerTest {
 
   @LocalServerPort
   private int port;
 
-  @Value("${local.management.port}")
+  @LocalManagementPort
   private int mgtPort;
 
   @Autowired
@@ -48,7 +47,6 @@ public class ControllerTest {
     pdfPayload.setInputParameter(inputParameters);
     pdfPayload.setTemplate(fileBytes);
 
-    @SuppressWarnings("rawtypes")
     ResponseEntity<byte[]> entity = this.testRestTemplate.postForEntity(
         new URI("http://localhost:" + this.port + "/pdf/generateFromTemplate"),
         pdfPayload,
@@ -58,8 +56,8 @@ public class ControllerTest {
   }
 
   @Test
+  @SuppressWarnings("rawtypes")
   public void shouldReturn200WhenSendingRequestToStatusEndpoint() throws Exception {
-    @SuppressWarnings("rawtypes")
     ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
         "http://localhost:" + this.port + "/pdf/status", Map.class);
 
@@ -73,7 +71,7 @@ public class ControllerTest {
   public void shouldReturn200WhenSendingRequestToManagementHealthEndpoint() throws Exception {
     @SuppressWarnings("rawtypes")
     ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-        "http://localhost:" + this.mgtPort + "/health", Map.class);
+        "http://localhost:" + this.mgtPort + "/actuator/health", Map.class);
     then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
   }
 
