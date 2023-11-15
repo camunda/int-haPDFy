@@ -11,7 +11,7 @@ FROM eclipse-temurin:17-jre-alpine
 EXPOSE 8080
 VOLUME ["/tmp"]
 ENV JAVA_OPTS="" \
-    DOCKER_JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap" \
+    DOCKER_JAVA_OPTS="-XX:+UnlockExperimentalVMOptions" \
     LANG=en_US.utf8 \
     DEPLOYMENT_ARTIFACT=haPDFy.jar
 ENTRYPOINT exec java ${JAVA_OPTS} ${DOCKER_JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /${DEPLOYMENT_ARTIFACT}
