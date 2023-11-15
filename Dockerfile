@@ -1,5 +1,5 @@
 ############ CI image ###############
-FROM maven:3.8.6-openjdk-18-slim as builder
+FROM maven:3.8.7-openjdk-18-slim as builder
 VOLUME ["/maven-repo"]
 WORKDIR /build
 ADD . /build
