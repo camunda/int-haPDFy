@@ -8,7 +8,7 @@ URL: https://stage.hapdfy.int.camunda.com
 
 A simple status check for the microservice
 
-- GET `/status`    
+- GET `/pdf/status`    
     * returns `{"status":"online"}`
 
 

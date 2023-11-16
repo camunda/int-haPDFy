@@ -4,3 +4,7 @@ spring:
 management:
   security:
     enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
