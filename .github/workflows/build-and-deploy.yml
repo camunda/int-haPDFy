@@ -94,7 +94,7 @@ jobs:
     - uses: azure/setup-kubectl@v3
     - name: GCloud Auth
       id: auth
-      uses: google-github-actions/auth@v1
+      uses: google-github-actions/auth@v2
       with:
         credentials_json: '${{ steps.secrets.outputs.GCP_CREDENTIALS }}'
     - id: get-credentials
