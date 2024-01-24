@@ -7,7 +7,7 @@ RUN mvn clean verify -DskipTests=false --batch-mode
 
 
 ############ Production image ###############
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17.0.10_7-jre-alpine
 EXPOSE 8080
 VOLUME ["/tmp"]
 ENV JAVA_OPTS="" \
