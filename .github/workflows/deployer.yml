@@ -45,7 +45,7 @@ jobs:
     needs: build
     env:
       # This is a ternary. See https://docs.github.com/en/actions/learn-github-actions/expressions#example
-      DIGEST_NAME: ${{github.ref == 'refs/heads/master' && github.event_name == 'push' && 'prod_image_digest' ||  'stage_image_digest' }}
+      DIGEST_NAME: ${{github.ref == 'refs/heads/live' && github.event_name == 'push' && 'prod_image_digest' ||  'stage_image_digest' }}
       DIGEST_VALUE: ${{needs.build.outputs.image-digest}}
     steps:
       - name: Checkout

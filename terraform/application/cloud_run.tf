@@ -6,7 +6,7 @@ resource "google_cloud_run_service" "hapdfy" {
   depends_on = [
     google_project_iam_member.hapdfy
   ]
-  name     = "hapdfy"
+  name     = "{var.prefix}hapdfy"
   location = var.region
 
   metadata {
