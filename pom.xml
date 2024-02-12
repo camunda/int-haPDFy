@@ -82,8 +82,6 @@
   </dependencies>
 
   <build>
-    <defaultGoal>verify</defaultGoal>
-
     <plugins>
       <plugin>
         <groupId>pl.project13.maven</groupId>
@@ -107,8 +105,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <layout>ZIP</layout>
-          <finalName>${final.name}</finalName>
           <additionalProperties>
             <encoding.source>UTF-8</encoding.source>
             <encoding.reporting>UTF-8</encoding.reporting>
@@ -118,10 +114,17 @@
         </configuration>
         <executions>
           <execution>
+            <phase>install</phase>
             <goals>
-              <goal>build-info</goal>
-              <goal>repackage</goal>
+              <goal>build-image</goal>
             </goals>
+            <configuration>
+              <image>
+                <name>
+                  europe-north1-docker.pkg.dev/hapdfy/hapdfy/hapdfy
+                </name>
+              </image>
+            </configuration>
           </execution>
         </executions>
       </plugin>
