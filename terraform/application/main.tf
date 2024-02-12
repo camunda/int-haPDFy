@@ -16,3 +16,8 @@ variable "image_digest" {
   type = string
   nullable= false
 }
+
+variable "prefix" {
+  type = string
+  default = ""
+}

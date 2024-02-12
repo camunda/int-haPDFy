@@ -1,12 +1,12 @@
 locals {
-  image_url = "${var.region}-docker.pkg.dev/${var.google_project_id}/${google_artifact_registry_repository.hapdfy.repository_id}/hapdfy@${var.image_digest}"
+  image_url = "${var.region}-docker.pkg.dev/${var.google_project_id}/hapdfy/hapdfy@${var.image_digest}"
 }
 
 resource "google_cloud_run_service" "hapdfy" {
   depends_on = [
     google_project_iam_member.hapdfy
   ]
-  name     = "{var.prefix}hapdfy"
+  name     = "${var.prefix}hapdfy"
   location = var.region
 
   metadata {
@@ -22,6 +22,12 @@ resource "google_cloud_run_service" "hapdfy" {
       service_account_name = google_service_account.hapdfy.email
       containers {
         image = local.image_url
+        resources {
+          limits = {
+            "cpu"    = "2000m",
+            "memory" = "4Gi"
+          }
+        }
         env {
           name  = "spring_profiles_active"
           value = "default"

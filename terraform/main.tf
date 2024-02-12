@@ -8,13 +8,14 @@ module "prod" {
   google_project_id   = var.google_project_id
   region              = local.region
   image_digest        = var.prod_image_digest
-  prefix              = ""
+  gha_service_account = local.gha_service_account
 }
 module "stage" {
   source = "./application"
   google_project_id   = var.google_project_id
   region              = local.region
   image_digest        = var.stage_image_digest
+  gha_service_account = local.gha_service_account
   prefix              = "stage-"
 }
 

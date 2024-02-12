@@ -1,5 +1,5 @@
 resource "google_service_account" "hapdfy" {
-  account_id   = "{var.prefix}hapdfy-sa"
+  account_id   = "${var.prefix}hapdfy-sa"
   display_name = "SA for the haPDFy service"
   description  = "The service account for the web service"
 }
