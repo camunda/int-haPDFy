@@ -1,17 +1,17 @@
 locals {
-  region = "europe-north1"
-  gha_service_account = "serviceAccount:${google_service_account.github_actions.email}"  
+  region              = "europe-north1"
+  gha_service_account = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 module "prod" {
-  source = "./application"
+  source              = "./application"
   google_project_id   = var.google_project_id
   region              = local.region
   image_digest        = var.prod_image_digest
   gha_service_account = local.gha_service_account
 }
 module "stage" {
-  source = "./application"
+  source              = "./application"
   google_project_id   = var.google_project_id
   region              = local.region
   image_digest        = var.stage_image_digest
