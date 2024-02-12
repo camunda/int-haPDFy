@@ -15,7 +15,7 @@ jobs:
     name: Build and Publish Docker image
     runs-on: ubuntu-latest
     outputs:
-      image-digest: ${{ steps.push.outputs.Digest}}
+      image-digest: ${{ steps.push.outputs.image-digest}}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -43,7 +43,7 @@ jobs:
       - name: Push image
         id: push
         run: |
-          docker push europe-north1-docker.pkg.dev/hapdfy/hapdfy/hapdfy:latest
+          docker push europe-north1-docker.pkg.dev/hapdfy/hapdfy/hapdfy:latest | awk '/digest/ {print "image-digest="$3}' >> "$GITHUB_OUTPUT"
 
   terraform:
     name: "Plan/Apply Terraform"
