@@ -32,6 +32,19 @@ resource "google_cloud_run_service" "hapdfy" {
           name  = "spring_profiles_active"
           value = "default"
         }
+        env {
+          name = "HAPDFY_USERNAME"
+          value = var.hapdfy_auth_config.username
+        }
+        env {
+          name = "HAPDFY_PASSWORD"
+          value_from {
+            secret_key_ref {
+              key  = var.hapdfy_auth_config.password_secret_version
+              name = var.hapdfy_auth_config_password_secret_ref
+            }
+          }
+        }
       }
     }
     metadata {

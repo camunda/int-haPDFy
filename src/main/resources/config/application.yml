@@ -1,6 +1,10 @@
 spring:
   application:
     name: haPDFy
+  security:
+    user:
+      name: ${HAPDFY_USERNAME}
+      password: ${HAPDFY_PASSWORD}
 management:
   security:
     enabled: false
