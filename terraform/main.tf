@@ -10,8 +10,8 @@ module "prod" {
   image_digest        = var.prod_image_digest
   gha_service_account = local.gha_service_account
   hapdfy_auth_config = {
-    username              = "hapdfy-int-camunda-com"
-    password_secret_ref   = "hapdfyPasswordSecret"
+    username                = "hapdfy-int-camunda-com"
+    password_secret_ref     = "hapdfyPasswordSecret"
     password_secret_version = "latest"
   }
 }
@@ -23,8 +23,8 @@ module "stage" {
   gha_service_account = local.gha_service_account
   prefix              = "stage-"
   hapdfy_auth_config = {
-    username              = "hapdfy-int-camunda-com-stage"
-    password_secret_ref   = "hapdfyPasswordSecretStage"
+    username                = "hapdfy-int-camunda-com-stage"
+    password_secret_ref     = "hapdfyPasswordSecretStage"
     password_secret_version = "latest"
   }
 }

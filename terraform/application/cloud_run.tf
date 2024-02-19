@@ -41,7 +41,7 @@ resource "google_cloud_run_service" "hapdfy" {
           value_from {
             secret_key_ref {
               key  = var.hapdfy_auth_config.password_secret_version
-              name = var.hapdfy_auth_config_password_secret_ref
+              name = var.hapdfy_auth_config.password_secret_ref
             }
           }
         }
