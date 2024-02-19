@@ -3,8 +3,8 @@ spring:
     name: haPDFy
   security:
     user:
-      name: ${HAPDFY_USERNAME}
-      password: ${HAPDFY_PASSWORD}
+      name: test
+      password: test
 management:
   security:
     enabled: false
