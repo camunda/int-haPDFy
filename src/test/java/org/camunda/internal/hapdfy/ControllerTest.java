@@ -47,10 +47,13 @@ public class ControllerTest {
     pdfPayload.setInputParameter(inputParameters);
     pdfPayload.setTemplate(fileBytes);
 
-    ResponseEntity<byte[]> entity = this.testRestTemplate.postForEntity(
-        new URI("http://localhost:" + this.port + "/pdf/generateFromTemplate"),
-        pdfPayload,
-        byte[].class);
+    ResponseEntity<byte[]> entity = this.testRestTemplate
+    		.withBasicAuth("test", "test")
+    		.postForEntity(
+			  new URI("http://localhost:" + this.port + "/pdf/generateFromTemplate"),
+			  pdfPayload,
+			  byte[].class
+			 );
 
     then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
   }
@@ -58,8 +61,9 @@ public class ControllerTest {
   @Test
   @SuppressWarnings("rawtypes")
   public void shouldReturn200WhenSendingRequestToStatusEndpoint() throws Exception {
-    ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-        "http://localhost:" + this.port + "/pdf/status", Map.class);
+    ResponseEntity<Map> entity = this.testRestTemplate
+    	.withBasicAuth("test", "test")
+		.getForEntity("http://localhost:" + this.port + "/pdf/status", Map.class);
 
     Map body = entity.getBody();
     then(body.containsKey("status")).isTrue();

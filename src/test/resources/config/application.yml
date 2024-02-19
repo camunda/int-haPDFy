@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: haPDFy
+  security:
+    user:
+      name: test
+      password: test
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
