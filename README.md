@@ -1,6 +1,6 @@
 # haPDFy - the happy pdf file generator
 
-URL: https://stage.hapdfy.int.camunda.com
+URL: https://stage-hapdfy-n32oqkbxcq-lz.a.run.app
 
 ## API Endpoints
 
@@ -22,6 +22,3 @@ Generate a pdf file from a pdf template. The template file must contain text fil
       * a JSON object which contains the PDF template as byte array
       * a string map wich contains the text field identifier and their values
     * returns the pdf file as Byte Array
-
-
-
