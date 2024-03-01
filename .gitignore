@@ -29,3 +29,4 @@ target
 .editorconfig
 *.iml
 *.code-workspace
+.vscode
