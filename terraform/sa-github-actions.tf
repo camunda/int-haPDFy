@@ -9,7 +9,7 @@ resource "google_project_iam_member" "github_actions" {
     "roles/iam.securityAdmin",      # To set IAM policies,
     "roles/run.admin",              # To create cloud run services
     "roles/iam.serviceAccountUser", # To create cloud run services
-    "roles/artifactregistry.writer" # To push docker images to the artifact registery
+    "roles/artifactregistry.admin"  # To create and update the repo configuration and push docker images to the artifact registery
   ])
 
   project = var.google_project_id
